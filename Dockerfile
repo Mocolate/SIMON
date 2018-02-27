@@ -30,8 +30,8 @@ RUN mkdir -p /root/workspace/
 COPY src/ /root/workspace/
 
 #Setup a password file for the VNC server
-#RUN mkdir /root/.vnc
-#RUN x11vnc -storepasswd 1234 ~/.vnc/passwd
+RUN mkdir /root/.vnc
+RUN x11vnc -storepasswd 1234 ~/.vnc/passwd
 
 #Setup a virtual screen buffer, with a VNC server
 COPY run.sh /root/
@@ -41,7 +41,7 @@ RUN chmod +x /root/run.sh
 ENTRYPOINT ["/root/run.sh"]
 
 #Expose port 5900 for VNC connection
-#EXPOSE 5900
+EXPOSE 5900
 
 #Set working directory
 WORKDIR /root/
